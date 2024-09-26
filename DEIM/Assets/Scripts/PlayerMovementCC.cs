@@ -51,7 +51,11 @@ public class PlayerMovementCC : MonoBehaviour
         movementVector.y = yVelocity;
 
         movementVector *= Time.deltaTime;           //mV = mV * Dt  para que se mueva igual en todos los ordenadores
-        characterController.Move(movementVector);
+        
+        if(x != 0 || z!= 0)                   // codigo nyapa, borrar en el furuto 
+        {
+            characterController.Move(movementVector);
+        }
     }
     
     void RotatePlayer(float mouseX)

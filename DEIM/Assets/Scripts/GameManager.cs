@@ -1,12 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
+    public enum GameManagerVariables { POINTS };
     public float initialPoints;
-    private float points;
+    
+    private TMP_Text tmp;
+    private int points;
+
     private void Awake()
     {
 
@@ -24,6 +29,10 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         initialPoints = points;
+    }
+    public int GetPoints()
+    {
+        return points;
     }
     public void AddPoints(int pointA)
     {

@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Points : MonoBehaviour
 {
-    private int valor = 1;
+    private int valor = 100;
     private void OnTriggerEnter(Collider collision)
     {
         if (collision.gameObject.GetComponent<PlayerMovementCC>() != null)
