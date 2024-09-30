@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -9,9 +10,9 @@ public class GameManager : MonoBehaviour
     public enum GameManagerVariables { POINTS };
     public float initialPoints;
     
-    private TMP_Text tmp;
     private int points;
-
+    
+    
     private void Awake()
     {
 
@@ -29,6 +30,11 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         initialPoints = points;
+        
+    }
+    private void Update()
+    {
+           
     }
     public int GetPoints()
     {
@@ -38,4 +44,14 @@ public class GameManager : MonoBehaviour
     {
         points += pointA;
     }
+    //public float GetTime()
+    //{
+    //    List<int> tiempo = new List<int>();
+        
+    //    foreach (int numero in tiempo)
+    //    {
+    //        Console.WriteLine(thisDay.ToString("g"));       //tiempo  5/3/2012 12:00 AM  
+    //    }
+    //    return tiempo.Count;
+    //}
 }
