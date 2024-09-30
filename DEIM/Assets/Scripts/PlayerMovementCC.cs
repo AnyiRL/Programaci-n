@@ -21,10 +21,6 @@ public class PlayerMovementCC : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (characterController.isGrounded) 
-        {
-            yVelocity = 0;       
-        }
 
         float x = Input.GetAxis("Horizontal");
         float z = Input.GetAxis("Vertical");
@@ -40,6 +36,7 @@ public class PlayerMovementCC : MonoBehaviour
     {
         if (jumpPressed && characterController.isGrounded)
         {
+            yVelocity = 0;
             yVelocity += Mathf.Sqrt(jumpForce * 3 * gravityScale);   //raiz cuadrada
         }
     }
@@ -47,15 +44,15 @@ public class PlayerMovementCC : MonoBehaviour
     void Movement(float x, float z)
     {
         Vector3 movementVector = transform.forward * speed * z + transform.right * speed * x;
-        yVelocity -= gravityScale;
+        if (!characterController.isGrounded)
+        {
+            yVelocity -= gravityScale;
+        }           
         movementVector.y = yVelocity;
 
         movementVector *= Time.deltaTime;           //mV = mV * Dt  para que se mueva igual en todos los ordenadores
-        
-        if(x != 0 || z!= 0)                   // codigo nyapa, borrar en el furuto 
-        {
-            characterController.Move(movementVector);
-        }
+                                                    
+        characterController.Move(movementVector);       
     }
     
     void RotatePlayer(float mouseX)

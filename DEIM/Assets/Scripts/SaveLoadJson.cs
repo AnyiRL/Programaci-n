@@ -15,20 +15,21 @@ public class SaveLoadJson : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Load();
         fileName = Application.persistentDataPath + "\\" + fileName;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.G))
-        {
-            Save();
-        }
-        else if (Input.GetKeyDown(KeyCode.L))
-        {
-            Load();
-        }
+        //if (Input.GetKeyDown(KeyCode.G))
+        //{
+        //    Save();
+        //}
+        //else if (Input.GetKeyDown(KeyCode.L))
+        //{
+        //    Load();
+        //}
     }
 
     private void Save()
@@ -37,7 +38,7 @@ public class SaveLoadJson : MonoBehaviour
         
         PlayerData playerData = new PlayerData();       // instancio objeto 
         playerData.position = transform.position;       //rellenamos info
-
+        sw.WriteLine(GameManager.instance.GetPoints());
         string json = JsonUtility.ToJson(playerData);    //pasar de objeto serializable a formato json 
         sw.WriteLine(json);
 
@@ -65,5 +66,9 @@ public class SaveLoadJson : MonoBehaviour
                 Debug.Log(e.Message);
             }
         }
+    }
+    private void OnDestroy()
+    {
+        Save();
     }
 }
