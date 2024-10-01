@@ -44,14 +44,9 @@ public class GameManager : MonoBehaviour
     {
         points += pointA;
     }
-    //public float GetTime()
+    //public void GetTime(DateTime time)
     //{
-    //    List<int> tiempo = new List<int>();
+    //     List<DateTime> tiempo = new List<DateTime>();
         
-    //    foreach (int numero in tiempo)
-    //    {
-    //        Console.WriteLine(thisDay.ToString("g"));       //tiempo  5/3/2012 12:00 AM  
-    //    }
-    //    return tiempo.Count;
     //}
 }

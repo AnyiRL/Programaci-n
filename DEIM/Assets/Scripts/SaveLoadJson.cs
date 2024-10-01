@@ -10,12 +10,13 @@ struct PlayerData                 //es mas pequeño que una clase
 {
     public Vector3 position;
     public int point;
-    public float time;
+    public DateTime time;
 }
 
 public class SaveLoadJson : MonoBehaviour
 {
     public string fileName = "test.json";
+    List<DateTime> tiempo = new List<DateTime>();
     private DateTime thisDay;
     // Start is called before the first frame update
     void Start()
@@ -27,6 +28,7 @@ public class SaveLoadJson : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        thisDay = DateTime.Now;
         //if (Input.GetKeyDown(KeyCode.G))
         //{
         //    Save();
@@ -44,15 +46,19 @@ public class SaveLoadJson : MonoBehaviour
         PlayerData playerData = new PlayerData();       // instancio objeto 
         playerData.position = transform.position;       //rellenamos info
         playerData.point = GameManager.instance.GetPoints();
+        playerData.time = thisDay;
+        tiempo.Add(thisDay);
+        foreach (DateTime time in tiempo)
+        {
+            sw.WriteLine(time);
+        }
         string json = JsonUtility.ToJson(playerData);    //pasar de objeto serializable a formato json 
         sw.WriteLine(json);
-
         sw.Close();
     }
 
     private void Load()
     {
-
         if (File.Exists(fileName))
         {
             StreamReader sr = new StreamReader(fileName);
@@ -65,6 +71,7 @@ public class SaveLoadJson : MonoBehaviour
                 PlayerData playerData = JsonUtility.FromJson<PlayerData>(json);     //no hace falta instanciar nuevo objeto porque ya se hace por dentro, pasa de json a objeto serializable
                 transform.position = playerData.position;
                 GameManager.instance.AddPoints(playerData.point);
+                tiempo.Add(playerData.time);
             }
             catch (System.Exception e)
             {

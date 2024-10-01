@@ -10,6 +10,7 @@ public class SaveLoadTxt : MonoBehaviour
 {
     public string fileName = "text.txt";
     private DateTime thisDay;
+    List<DateTime> tiempo = new List<DateTime>();
     // Start is called before the first frame update
     void Start()
     {
@@ -19,7 +20,7 @@ public class SaveLoadTxt : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        thisDay = DateTime.Today;
+        thisDay = DateTime.Now;
         //    if (Input.GetKeyDown(KeyCode.G))
         //    {
         //        Save();
@@ -38,10 +39,19 @@ public class SaveLoadTxt : MonoBehaviour
         sw.WriteLine(transform.position.y);
         sw.WriteLine(transform.position.z);
         sw.WriteLine(GameManager.instance.GetPoints());
-        sw.WriteLine(thisDay.ToString("g"));                  //tiempo  5/3/2012 12:00 AM
-        //sw.WriteLine(GameManager.instance.GetTime());
-
+        sw.WriteLine(thisDay.ToString("g"));            //tiempo  5/3/2012 12:00 AM
+        tiempo.Add(thisDay);
+        //if (tiempo.Count != 0)
+        //{
+        //    sw.WriteLine(tiempo);
+        //}
+        foreach (DateTime time in tiempo)
+        {
+            sw.WriteLine(time);
+        }
+                                                             
         sw.Close();        // es importante cerrar el archivo, no se guarda si no se cierra
+        
     }
 
     private void Load()
@@ -59,12 +69,14 @@ public class SaveLoadTxt : MonoBehaviour
                 float y = float.Parse(sr.ReadLine());
                 float z = float.Parse(sr.ReadLine());
                 int point = int.Parse(sr.ReadLine());
-                float time = float.Parse(sr.ReadLine());
+                DateTime time = DateTime.Parse(sr.ReadLine());
+                sr.ReadLine();
                 transform.position = new Vector3(x, y, z);  // establecemos la posicion en el gameObject
-
+                //tiempo.Add(time);
+                
                 sr.Close();     // puede corromper el archivo si no se cierra
                 GameManager.instance.AddPoints(point);
-                //GameManager.instance.GetTime(time);
+                //GameManager.instance.GetTime(tiempo.Add(time));
             }
             catch (System.Exception e)        //  como no seguarda info en ningun servidor, guardamos en LOCAL, no tenemos control sobre el archivo del usuario.
             {                                 // NOS aseguramos de detectar excepciones (errores) mientras se ejecuta y si algo va mal tenerlo controlado, sacar al topo de AC   
