@@ -11,8 +11,9 @@ public class GameManager : MonoBehaviour
     public float initialPoints;
     
     private int points = 0;
-    
-    
+    private List<string> hours;
+
+
     private void Awake()
     {
 
@@ -21,6 +22,7 @@ public class GameManager : MonoBehaviour
         {
             instance = this;    // instance se asigna a este objet.                                 el gameManager querra crearse, si no hay otro antes este sera el principal
             DontDestroyOnLoad(gameObject);        //no se destruye con la carga de escenas 
+            hours = new List<string>();
         }
         else
         {
@@ -30,7 +32,6 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         initialPoints = points;
-        
     }
     private void Update()
     {
@@ -44,9 +45,12 @@ public class GameManager : MonoBehaviour
     {
         points += pointA;
     }
-    //public void GetTime(DateTime time)
-    //{
-    //     List<DateTime> tiempo = new List<DateTime>();
-        
-    //}
+    public List<string> GetTime()
+    {
+         return hours;
+    }
+    public void SetTime(List<string> value)
+    {
+        hours = value;
+    }
 }

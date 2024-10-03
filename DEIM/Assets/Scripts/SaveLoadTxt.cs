@@ -9,9 +9,7 @@ using UnityEngine;
 public class SaveLoadTxt : MonoBehaviour
 {
     public string fileName = "text.txt";
-    private DateTime thisDay;
-    List<DateTime> tiempo = new List<DateTime>();
-    //private int index = 0;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -21,7 +19,6 @@ public class SaveLoadTxt : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        thisDay = DateTime.Now;
         //    if (Input.GetKeyDown(KeyCode.G))
         //    {
         //        Save();
@@ -40,19 +37,13 @@ public class SaveLoadTxt : MonoBehaviour
         sw.WriteLine(transform.position.y);
         sw.WriteLine(transform.position.z);
         sw.WriteLine(GameManager.instance.GetPoints());
-        sw.WriteLine(thisDay.ToString());            //tiempo  5/3/2012 12:00:00
-        //tiempo.Add(thisDay);
-        //sw.WriteLine(index++);
-        
-        for (int i = 0; i < tiempo.Count; i++)
+        List<string> hoursAux = GameManager.instance.GetTime();
+        hoursAux.Add(DateTime.Now.ToString("HH:mm:ss"));
+        foreach (string hour in hoursAux)
         {
-            sw.WriteLine(tiempo[i]);    
+            sw.WriteLine(hour);
         }
-        //foreach (DateTime time in tiempo)
-        //{
-        //    sw.WriteLine(thisDay.ToString());         
-        //}
-                                                             
+
         sw.Close();        // es importante cerrar el archivo, no se guarda si no se cierra
         
     }
@@ -72,13 +63,21 @@ public class SaveLoadTxt : MonoBehaviour
                 float y = float.Parse(sr.ReadLine());
                 float z = float.Parse(sr.ReadLine());
                 int point = int.Parse(sr.ReadLine());
-                DateTime time = DateTime.Parse(sr.ReadLine());
-                //int index = int.Parse(sr.ReadLine()); 
-                sr.ReadLine();
-                transform.position = new Vector3(x, y, z);  // establecemos la posicion en el gameObject
-                tiempo.Add(time);
+              
+                List<string> hoursAux = new List<string>();
                 
+                //como las horas es lo uktimo que se guarda 
+                while (!sr.EndOfStream)
+                {
+                    hoursAux.Add(sr.ReadLine());
+                }
+
+                GameManager.instance.SetTime(hoursAux);
+
                 sr.Close();     // puede corromper el archivo si no se cierra
+
+                transform.position = new Vector3(x, y, z);  // establecemos la posicion en el gameObject
+
                 GameManager.instance.AddPoints(point);
             }
             catch (System.Exception e)        //  como no seguarda info en ningun servidor, guardamos en LOCAL, no tenemos control sobre el archivo del usuario.
@@ -87,8 +86,7 @@ public class SaveLoadTxt : MonoBehaviour
             }
         }
     }
-
-    private void OnDestroy()
+    private void OnApplicationQuit()
     {
         Save();
     }
