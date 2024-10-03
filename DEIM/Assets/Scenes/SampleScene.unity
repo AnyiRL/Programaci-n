@@ -903,9 +903,7 @@ GameObject:
   - component: {fileID: 662085699}
   - component: {fileID: 662085696}
   - component: {fileID: 662085695}
-  - component: {fileID: 662085702}
-  - component: {fileID: 662085703}
-  - component: {fileID: 662085704}
+  - component: {fileID: 662085705}
   m_Layer: 0
   m_Name: CapsuleCC
   m_TagString: Untagged
@@ -1022,7 +1020,7 @@ Transform:
   - {fileID: 963194228}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &662085702
+--- !u!114 &662085705
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1035,32 +1033,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fileName: test.json
---- !u!114 &662085703
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 662085694}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a7ef5cef82fa59d45bbbd6650f77dfbc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  fileName: text.txt
---- !u!114 &662085704
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 662085694}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d528552f9044b1842943456057ef2c84, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  fileName: text.bin
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
