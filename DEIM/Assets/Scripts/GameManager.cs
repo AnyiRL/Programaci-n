@@ -10,7 +10,7 @@ public class GameManager : MonoBehaviour
     public enum GameManagerVariables { POINTS };
     public float initialPoints;
     
-    private int points;
+    private int points = 0;
     
     
     private void Awake()

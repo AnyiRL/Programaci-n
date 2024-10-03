@@ -71,7 +71,7 @@ public class SaveLoadJson : MonoBehaviour
                 PlayerData playerData = JsonUtility.FromJson<PlayerData>(json);     //no hace falta instanciar nuevo objeto porque ya se hace por dentro, pasa de json a objeto serializable
                 transform.position = playerData.position;
                 GameManager.instance.AddPoints(playerData.point);
-                //tiempo.Add(playerData.time);
+                tiempo.Add(playerData.time);
             }
             catch (System.Exception e)
             {
