@@ -5,7 +5,7 @@ using UnityEngine;
 [System.Serializable]
 public struct StateParameter
 {
-    [Tooltip("Indicate fi tha action´s check must be true or false")]
+    [Tooltip("Indicate if the action´s check must be true or false")]
     public bool actionValue;
     [Tooltip("Action that is gonna be executed")]
     public Action action;
@@ -17,12 +17,11 @@ public abstract class State : ScriptableObject
 {
     public StateParameter[] StateParameter;
     public State[] nextStates;
-    public Action[] actions;
-    // public Action [] actions;
+    //public Action[] actions;
 
-    //private bool ChecksActions()
+    //private bool ChecksActions()//devolver true si alguna de sus acciones se cumple, o false si es al contrairio
     //{
-    //    //devolver true si alguna de sus acciones se cumple, o false si es al contrairio
+        
     //}
     public abstract State Run(GameObject owner);
 
