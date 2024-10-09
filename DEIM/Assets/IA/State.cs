@@ -21,7 +21,13 @@ public abstract class State : ScriptableObject
 
     //private bool ChecksActions()//devolver true si alguna de sus acciones se cumple, o false si es al contrairio
     //{
-        
+    //    for (int i = 0; i < StateParameter.Length; ++i)
+    //    {
+    //        if (StateParameter[i].actionValue == true)
+    //        {
+    //            return true;
+    //        }         
+    //    }
     //}
     public abstract State Run(GameObject owner);
 
