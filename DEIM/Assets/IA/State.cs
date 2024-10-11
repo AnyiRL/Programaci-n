@@ -15,20 +15,21 @@ public struct StateParameter
 }
 public abstract class State : ScriptableObject           
 {
-    public StateParameter[] StateParameter;
-    public State[] nextStates;
+    public StateParameter[] stateParameter;
+    //public State[] nextStates;
     //public Action[] actions;
 
-    //private bool ChecksActions()//devolver true si alguna de sus acciones se cumple, o false si es al contrairio
-    //{
-    //    for (int i = 0; i < StateParameter.Length; ++i)
-    //    {
-    //        if (StateParameter[i].actionValue == true)
-    //        {
-    //            return true;
-    //        }         
-    //    }
-    //}
+    protected State ChecksActions(GameObject owner)//devolver true si alguna de sus acciones se cumple, o false si es al contrairio
+    {
+        for (int i = 0; i < stateParameter.Length; ++i)
+        {
+            if (stateParameter[i].actionValue == stateParameter[i].action.Check(owner))
+            {
+                return stateParameter[i].nextState;
+            }
+        }
+        return null;
+    }
     public abstract State Run(GameObject owner);
 
 }

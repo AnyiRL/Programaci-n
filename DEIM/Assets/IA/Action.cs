@@ -1,9 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering;
 
-public abstract class Action : MonoBehaviour
+public abstract class Action : ScriptableObject
 {
-    public bool value;   // si la accion se cumple o no 
-    public abstract bool Check(GameObject owner);   //ejecutar la accion de la condicion 
+    // la accion no se puede implementar 
+    public abstract bool Check(GameObject owner);   //ejecutar la accion
+
+    //metodo abstracto de dibujar gizmo
+    public abstract void OnDrawGizmos(GameObject owner);
 }
