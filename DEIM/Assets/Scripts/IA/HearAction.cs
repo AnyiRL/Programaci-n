@@ -21,9 +21,9 @@ public class HearAction : Action
         return false;
     }
 
-    public override void OnDrawGizmos(GameObject owner)
+    public override void DrawGizmos(GameObject owner)
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(owner.transform.position, radius); 
-    }   
+        Gizmos.DrawWireSphere(owner.transform.position, radius);  //la esfera para escuchar
+    }
 }

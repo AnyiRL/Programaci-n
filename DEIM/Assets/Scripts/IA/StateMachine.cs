@@ -6,11 +6,10 @@ public class StateMachine : MonoBehaviour
 {
     public State initialState;
     private State currentState;
-    private HearAction actionDraw;
+
     private void Start()
     {
         currentState = initialState;
-        actionDraw = GetComponent<HearAction>();
     }
 
     private void Update()
@@ -19,8 +18,14 @@ public class StateMachine : MonoBehaviour
         if (nextState)
         {
             currentState = nextState;
-        }
-        actionDraw.OnDrawGizmos(gameObject);
+        }        
     }
     // llamar el OnDrawGizmos
+    private void OnDrawGizmos()
+    {
+        if (currentState)
+            currentState.DrawAllACtionsGizmo(gameObject);
+        else if (initialState)
+            initialState.DrawAllACtionsGizmo(gameObject);
+    }
 }

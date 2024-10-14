@@ -6,10 +6,11 @@ using UnityEngine;
 
 public class PlayerMovementCC : MonoBehaviour
 {
-    public float speed, mouseSens, gravityScale, jumpForce;
+    public float speed, runningSpeed, mouseSens, gravityScale, jumpForce;
 
-    private float yVelocity = 0;
+    private float yVelocity = 0, currentSpeed;
     private CharacterController characterController;
+    private Vector3 movementVector, auxMovementVector;
 
     // Start is called before the first frame update
     void Start()
@@ -24,12 +25,13 @@ public class PlayerMovementCC : MonoBehaviour
 
         float x = Input.GetAxis("Horizontal");
         float z = Input.GetAxis("Vertical");
-        //float mouseX = Input.GetAxis("Mouse X");
+        bool shiftPressed = Input.GetKey(KeyCode.LeftShift);
+        float mouseX = Input.GetAxis("Mouse X");
         bool jumpPressed = Input.GetKeyDown(KeyCode.Space);
-        
+
         Jump(jumpPressed);       
-        Movement(x, z);
-        //RotatePlayer(mouseX);
+        Movement(x, z, shiftPressed);
+        RotatePlayer(mouseX);
     }
 
     void Jump(bool jumpPressed)
@@ -41,9 +43,15 @@ public class PlayerMovementCC : MonoBehaviour
         }
     }
 
-    void Movement(float x, float z)
+    void Movement(float x, float z, bool shiftPressed)
     {
-        Vector3 movementVector = transform.forward * speed * z + transform.right * speed * x;
+        if (shiftPressed)
+            currentSpeed = runningSpeed;
+        else
+            currentSpeed = speed;
+
+        movementVector = transform.forward * currentSpeed * z + transform.right * currentSpeed * x;
+        auxMovementVector = movementVector;
         if (!characterController.isGrounded)
         {
             yVelocity -= gravityScale;
@@ -53,6 +61,12 @@ public class PlayerMovementCC : MonoBehaviour
         movementVector *= Time.deltaTime;           //mV = mV * Dt  para que se mueva igual en todos los ordenadores
                                                     
         characterController.Move(movementVector);       
+    }
+
+    public Vector3 GetMovementVector()
+    {
+        return auxMovementVector;
+
     }
     
     void RotatePlayer(float mouseX)

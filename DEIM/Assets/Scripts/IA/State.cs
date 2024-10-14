@@ -32,4 +32,11 @@ public abstract class State : ScriptableObject
     }
     public abstract State Run(GameObject owner);
 
+    public void DrawAllACtionsGizmo(GameObject owner)
+    {
+        foreach (StateParameter parameter in stateParameter)
+        {
+            parameter.action.DrawGizmos(owner);
+        }
+    }
 }
