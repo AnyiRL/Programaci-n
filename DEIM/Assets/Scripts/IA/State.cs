@@ -3,12 +3,19 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
-public struct StateParameter
-{
-    [Tooltip("Indicate if the action´s check must be true or false")]
-    public bool[] actionsValues;
+public struct ActionParameters
+{  
     [Tooltip("Action that is gonna be executed")]
-    public Action[] actions;
+    public Action action;
+    [Tooltip("Indicate if the action´s check must be true or false")]
+    public bool actionValue;
+}
+
+[System.Serializable]
+public struct StateParameters
+{
+    [Tooltip("ActionParameters array")]
+    public ActionParameters[] actionParameters;
     [Tooltip("If the action´s check equals actionValue, nextState is pushed")]
     public State nextState;
     [Tooltip("Se cumplen todas las acciones o solo se tiene que cumplir una")]
@@ -17,7 +24,7 @@ public struct StateParameter
 }
 public abstract class State : ScriptableObject           
 {
-    public StateParameter[] stateParameters;
+    public StateParameters[] stateParameters;   
     //public State[] nextStates;
     //public Action[] actions;
 
@@ -26,10 +33,10 @@ public abstract class State : ScriptableObject
         bool todasLasAccionesSeHanCumplido = true;
         for (int i = 0; i < stateParameters.Length; ++i) //recorre los parametros
         {
-            for (int j = 0; j < stateParameters[i].actions.Length; j++)    //recorre las acciones de los parametros
+            for (int j = 0; j < stateParameters[i].actionParameters.Length; j++)    //recorre las acciones de los parametros
             {
-                
-                if (stateParameters[i].actions[j].Check(owner) == stateParameters[i].actionsValues[j])    //Comprueba las acciones con los check
+                ActionParameters actionParameter = stateParameters[i].actionParameters[j];          
+                if (actionParameter.action.Check(owner) == actionParameter.actionValue)    //Comprueba las acciones con los check
                 {
                     if (!stateParameters[i].and)      //si solo se tiene que cumplir una 
                     {
@@ -56,11 +63,11 @@ public abstract class State : ScriptableObject
 
     public void DrawAllACtionsGizmo(GameObject owner)
     {
-        foreach (StateParameter parameter in stateParameters)
+        foreach (StateParameters parameter in stateParameters)
         {
-            foreach(Action action in parameter.actions)
+            foreach (ActionParameters aP in parameter.actionParameters)
             {
-                action.DrawGizmos(owner);
+                aP.action.DrawGizmos(owner);
             }
         }
     }
