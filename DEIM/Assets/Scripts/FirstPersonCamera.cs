@@ -21,12 +21,11 @@ public class FirstPersonCamera : MonoBehaviour
         float mouseY = Input.GetAxis("Mouse Y") * mouseSens * Time.deltaTime;
        
         mouseYRotation -= mouseY;
-
-        if (mouseYRotation < 90 && mouseYRotation > -90)
+        if (mouseYRotation == Mathf.Clamp(mouseYRotation, -90, 90))
         {
             transform.localEulerAngles = Vector3.right * mouseYRotation;       //angulos normales y lo modifica por dentro
         }
-        mouseYRotation = Mathf.Clamp(mouseYRotation, -90, 90);
+        
 
         playerTransform.Rotate(Vector3.up * mouseX);         
     }
