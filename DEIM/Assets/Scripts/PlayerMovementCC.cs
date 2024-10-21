@@ -6,11 +6,11 @@ using UnityEngine;
 
 public class PlayerMovementCC : MonoBehaviour
 {
-    public float speed, runningSpeed, mouseSens, gravityScale, jumpForce;
+    public float walkingSpeed, runningSpeed, acceleration, mouseSens, gravityScale, jumpForce;
 
     private float yVelocity = 0, currentSpeed;
     private CharacterController characterController;
-    private Vector3 movementVector, auxMovementVector;
+    private Vector3 movementVector;
 
     // Start is called before the first frame update
     void Start()
@@ -45,13 +45,26 @@ public class PlayerMovementCC : MonoBehaviour
 
     void Movement(float x, float z, bool shiftPressed)
     {
-        if (shiftPressed)
-            currentSpeed = runningSpeed;
+        //if (shiftPressed)
+        //    currentSpeed = runningSpeed;
+        //else
+        //    currentSpeed = walkingSpeed;
+        if (shiftPressed && (x != 0 || z != 0))
+        {
+            currentSpeed = Mathf.Lerp(currentSpeed, runningSpeed, acceleration * Time.deltaTime);
+        }
+        else if (x != 0 || z != 0)
+        {
+            currentSpeed = Mathf.Lerp(currentSpeed, walkingSpeed, acceleration * Time.deltaTime);
+        }
         else
-            currentSpeed = speed;
+        {
+            currentSpeed = Mathf.Lerp(currentSpeed, 0, acceleration * Time.deltaTime);
+
+        }
 
         movementVector = transform.forward * currentSpeed * z + transform.right * currentSpeed * x;
-        auxMovementVector = movementVector;
+
         if (!characterController.isGrounded)
         {
             yVelocity -= gravityScale;
@@ -63,16 +76,14 @@ public class PlayerMovementCC : MonoBehaviour
         characterController.Move(movementVector);       
     }
 
-    public Vector3 GetMovementVector()
-    {
-        return auxMovementVector;
-
-    }
     
     void RotatePlayer(float mouseX)
     {
         Vector3 rotation = new Vector3(0, mouseX, 0) * mouseSens * Time.deltaTime;     //new Vector3(0, 5, 0) * Time.deltaTime  rotación c
         transform.Rotate(rotation); // rota a la direccion que se indica
     }
-
+    public float GetCurrentSpeed()
+    {
+        return currentSpeed;
+    }
 }
