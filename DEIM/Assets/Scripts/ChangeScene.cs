@@ -5,8 +5,19 @@ using UnityEngine.SceneManagement;
 
 public class ChangeScene : MonoBehaviour
 {
-    public void Change()
+    public void Play()
     {
         SceneManager.LoadScene("Terreno");     
+    }
+    public void Menu()
+    {
+        SceneManager.LoadScene("Menu");     
+    }
+
+    public void ExitGame()
+    {
+        Debug.Log("Exit");
+        Application.Quit();// cierra la aplicacion
+
     }
 }

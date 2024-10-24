@@ -16,7 +16,8 @@ MonoBehaviour:
   - actionParameters:
     - action: {fileID: 11400000, guid: 3edc384e363be1c44b3e56a75b633329, type: 2}
       actionValue: 0
-    - action: {fileID: 11400000, guid: 1bbaf29b70781c54a873989915fd8647, type: 2}
-      actionValue: 0
+    - action: {fileID: 11400000, guid: aa3ed6eb68922474aac4db14f82ee603, type: 2}
+      actionValue: 1
     nextState: {fileID: 11400000, guid: c7db5a4e13f73324d95d899665bb1399, type: 2}
     and: 1
+  blendParameter: Speed
