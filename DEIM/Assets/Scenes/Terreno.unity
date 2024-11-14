@@ -428,7 +428,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 336308999}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.120186, y: 0.000000029600292, z: -0.0000000035835162, w: 0.9927514}
+  m_LocalRotation: {x: 0.12018599, y: -0, z: -0, w: 0.9927514}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -823,12 +823,12 @@ MonoBehaviour:
   m_RequiresColorTexture: 0
   m_Version: 2
   m_TaaSettings:
-    quality: 3
-    frameInfluence: 0.1
-    jitterScale: 1
-    mipBias: 0
-    varianceClampScale: 0.9
-    contrastAdaptiveSharpening: 0
+    m_Quality: 3
+    m_FrameInfluence: 0.1
+    m_JitterScale: 1
+    m_MipBias: 0
+    m_VarianceClampScale: 0.9
+    m_ContrastAdaptiveSharpening: 0
 --- !u!114 &696767788
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2023,6 +2023,51 @@ Transform:
   - {fileID: 336309001}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1129548753
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1129548755}
+  - component: {fileID: 1129548754}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1129548754
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1129548753}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 924a307719b614345be2edaa19ee6f31, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  initialPoints: 0
+--- !u!4 &1129548755
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1129548753}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 106.1668, y: 19.024677, z: 755.00946}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1319579063
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2088,7 +2133,8 @@ PrefabInstance:
       value: enemy
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 7882376022164389543, guid: 304463a6a8567c844b119c6c298fe081, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 304463a6a8567c844b119c6c298fe081, type: 3}
@@ -2613,7 +2659,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1542914357}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.13817619, y: -0.000000008520667, z: 0.0000000011887561, w: 0.9904077}
+  m_LocalRotation: {x: 0.13817629, y: -0, z: -0, w: 0.99040765}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -2998,7 +3044,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1890435041}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.15616833, y: -1e-45, z: -0, w: 0.98773044}
+  m_LocalRotation: {x: 0.15616834, y: -0, z: -0, w: 0.98773044}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -3093,7 +3139,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1940667136}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.13817619, y: -0.000000008520667, z: 0.0000000011887563, w: 0.99040765}
+  m_LocalRotation: {x: 0.13817629, y: 0, z: 0, w: 0.99040765}
   m_LocalPosition: {x: 71.51352, y: 18.302986, z: 751.19995}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -3172,12 +3218,12 @@ MonoBehaviour:
   m_RequiresColorTexture: 0
   m_Version: 2
   m_TaaSettings:
-    quality: 3
-    frameInfluence: 0.1
-    jitterScale: 1
-    mipBias: 0
-    varianceClampScale: 0.9
-    contrastAdaptiveSharpening: 0
+    m_Quality: 3
+    m_FrameInfluence: 0.1
+    m_JitterScale: 1
+    m_MipBias: 0
+    m_VarianceClampScale: 0.9
+    m_ContrastAdaptiveSharpening: 0
 --- !u!1 &2078613543
 GameObject:
   m_ObjectHideFlags: 0
@@ -3344,3 +3390,4 @@ SceneRoots:
   - {fileID: 1606905467}
   - {fileID: 992663625}
   - {fileID: 248339964}
+  - {fileID: 1129548755}
