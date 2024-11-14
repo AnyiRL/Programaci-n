@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 042631600c1eed94991f35b263917268, type: 3}
+  m_Name: HelloState (S)
+  m_EditorClassIdentifier: 
+  stateParameters:
+  - actionParameters:
+    - action: {fileID: 11400000, guid: f037698ca03918f4594a585343525cbe, type: 2}
+      actionValue: 0
+    nextState: {fileID: 11400000, guid: ae11383f15a42724298e129669d45e8c, type: 2}
+    and: 0
+  blendParameter: Hello

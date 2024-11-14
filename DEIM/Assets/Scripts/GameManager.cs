@@ -2,15 +2,17 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
-    public enum GameManagerVariables { POINTS };
+    public enum GameManagerVariables { POINTS,LIFES };
     public float initialPoints;
-    
+    public int initialLifes;
     private int points = 0;
+    private int lifes = 3;
     private List<string> hours;
 
 
@@ -32,6 +34,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         initialPoints = points;
+        initialLifes = lifes;
     }
     private void Update()
     {
@@ -44,6 +47,24 @@ public class GameManager : MonoBehaviour
     public void AddPoints(int pointA)
     {
         points += pointA;
+    }
+    public int GetLifes()
+    {
+        return lifes;
+    }
+    public void AddLifes(int lifeA)
+    {
+        lifes += lifeA;
+    }
+
+    public void QuitLifes (int valor)
+    {
+        lifes -= valor;
+
+        //if (lifes <= 0)
+        //{
+        //    lifes = initialLifes;
+        //}
     }
     public List<string> GetTime()
     {

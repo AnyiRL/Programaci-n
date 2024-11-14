@@ -1,114 +1,75 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.InteropServices.WindowsRuntime;
+using UnityEditor;
 using UnityEngine;
 
-//[CreateAssetMenu(fileName = "HearAction (A)", menuName = "ScriptableObject/Action/HearAction")]
+[CreateAssetMenu(fileName = "SeeAction (A)", menuName = "ScriptableObject/Action/SeeAction")]
 
-//public class SeeAction : Monovehaviour
-//{
-//    public float distance = 10;
-//    public float angle = 30;
-//    public float height = 1.0f;
-//    public Color meshColor = Color.red;
-    
-//    Mesh mesh;
-//    public override bool Check(GameObject owner)
-//    {
-//        throw new System.NotImplementedException();
-//    }
+public class SeeAction : Action
+{
+    public float radius;
+    public LayerMask targetMask;
+    public LayerMask obstructionMask;
+    [Range(0, 360)]
+    public float angle;
+    public AudioClip HelloClip;
 
-//    public override void DrawGizmos(GameObject owner)
-//    {
-//        if (mesh)
-//        {
-//            DrawGizmos().color = meshColor;
-//            DrawGizmos().DrawMesh(mesh, transform.position, transform.rotation);
+    public override bool Check(GameObject owner)
+    {
+        Collider[] rangeChecks = Physics.OverlapSphere(owner.transform.position, radius, targetMask);
 
-//        }
-//    }
+        if (rangeChecks.Length != 0)
+        {
+            Transform target = rangeChecks[0].transform;
+            Vector3 directionToTarget = (target.position - owner.transform.position).normalized;
 
-//    // Start is called before the first frame update
-//    void Start()
-//    {
-        
-//    }
+            if (Vector3.Angle(owner.transform.forward, directionToTarget) < angle / 2)
+            {
+                float distanceToTarget = Vector3.Distance(owner.transform.position, target.position);
 
-//    // Update is called once per frame
-//    void Update()
-//    {
-        
-//    }
+                if (!Physics.Raycast(owner.transform.position, directionToTarget, distanceToTarget, obstructionMask))
+                {
+                   // AudioManager.instance.PlayAudio(HelloClip, "HelloSound");
+                    return true;
+                }
+                else
+                    return false;
+            }
+            else
+                return false;
+        }
+        else
+           return false;
+    }
 
-//    Mesh CreateWedgeMesh()
-//    {
-//        Mesh mesh = new Mesh();
-//        int numTriangles = 8;
-//        int numVertices = numVertices * 3;
+    public override void DrawGizmos(GameObject owner)
+    {
+        //FieldOfViewEditor foveditor = owner.GetComponent<FieldOfViewEditor>();
+        //foveditor.tra = owner.transform;
+        //foveditor.angle = angle;
+        //foveditor.target = owner.GetComponent<TargetReference>().target;
+        //foveditor.radius = radius;
+        //return;
+    //    FieldOfView fov = (FieldOfView)target;
+    //    Handles.color = Color.white;
+    //    Handles.DrawWireArc(fov.transform.position, Vector3.up, Vector3.forward, 360, fov.radius);
 
-//        Vector3[] vertices = new Vector3[numVertices];
-//        int[] triangles = new int[numVertices];
+    //    Vector3 viewAngle01 = DirectionFromAngle(fov.transform.eulerAngles.y, -fov.angle / 2);
+    //    Vector3 viewAngle02 = DirectionFromAngle(fov.transform.eulerAngles.y, fov.angle / 2);
+    //    Handles.color = Color.yellow;
+    //    Handles.DrawLine(fov.transform.position, fov.transform.position + viewAngle01 * fov.radius);
+    //    Handles.DrawLine(fov.transform.position, fov.transform.position + viewAngle02 * fov.radius);
 
-//        Vector3 bottomCenter = Vector.zero;
-//        Vector3 bottomRight = Quaternion.Euler(0, -angle,0) * Vector3.forward * distance;
-//        Vector3 bottomLeft = Quaternion.Euler(0, angle,0) * Vector3.forward * distance;
-
-//        Vecto3 topCenter = bottomCenter + Vector.up * height;
-//        Vecto3 topRight = bottomRight + Vector.up * height;
-//        Vecto3 topLeft = bottomLeft + Vector.up * height;
-
-//        int vert = 0;
-
-//        //left side
-//        vertices[vert++] = bottomCenter;
-//        vertices[vert++] = bottomLeft;
-//        vertices[vert++] = topLeft;
-
-//        vertices[vert++] = topLeft;
-//        vertices[vert++] = topCenter;
-//        vertices[vert++] = bottomCenter;
-//        //right side
-//        vertices[vert++] = bottomCenter;
-//        vertices[vert++] = topCenter;
-//        vertices[vert++] = topRight;
-
-//        vertices[vert++] = topRight;
-//        vertices[vert++] = bottomRight;
-//        vertices[vert++] = bottomCenter;
-
-//        //far side
-//        vertices[vert++] = bottomLeft;
-//        vertices[vert++] = bottomRight;
-//        vertices[vert++] = topRight;
-
-//        vertices[vert++] = topRight;
-//        vertices[vert++] = topLeft;
-//        vertices[vert++] = bottomLeft;
-
-//        //top
-//        vertices[vert++] = topCenter;
-//        vertices[vert++] = topLeft;
-//        vertices[vert++] = topRight;
-        
-//        //bottom
-//        vertices[vert++] = bottomCenter;
-//        vertices[vert++] = bottomRight;
-//        vertices[vert++] = bottomLeft;
-
-//        for (int i = 0; i < numVertices; i++)
-//        {
-//            triangles[i] = i;
-//        }
-
-//        mesh.vertices = vertices;   
-//        mesh.triangles = triangles;
-//        mesh.RecalculateNormals();
-
-//        return mesh;
-
-//    }
-
-//    private void OnValidate()
-//    {
-//        mesh = CreateWedgeMesh();
-//    }
-//}
+    //    if (true)
+    //    {
+    //        Handles.color = Color.green;
+    //        Handles.DrawLine(fov.transform.position, owner.transform.position);
+    //    }
+    //}
+    //private Vector3 DirectionFromAngle(float eulerY, float angleInDegrees)
+    //{
+    //    angleInDegrees += eulerY;
+    //    return new Vector3(Mathf.Sin(angleInDegrees * Mathf.Deg2Rad), 0, Mathf.Cos(angleInDegrees * Mathf.Deg2Rad));
+    }
+}

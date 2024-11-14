@@ -21,6 +21,6 @@ public class TimePassedAction : Action
 
     public override void DrawGizmos(GameObject owner)
     {
-       
+       return;
     }
 }
