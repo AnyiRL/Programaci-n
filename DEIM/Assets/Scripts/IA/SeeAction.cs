@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.InteropServices.WindowsRuntime;
+using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
 
@@ -14,11 +15,16 @@ public class SeeAction : Action
     [Range(0, 360)]
     public float angle;
     public AudioClip HelloClip;
-
+    private float currentTime = 0;
+    private float maxTime = 2;
+    void Update()
+    {
+        currentTime += Time.deltaTime;
+    }
     public override bool Check(GameObject owner)
     {
         Collider[] rangeChecks = Physics.OverlapSphere(owner.transform.position, radius, targetMask);
-
+        currentTime += Time.deltaTime;
         if (rangeChecks.Length != 0)
         {
             Transform target = rangeChecks[0].transform;
@@ -30,7 +36,12 @@ public class SeeAction : Action
 
                 if (!Physics.Raycast(owner.transform.position, directionToTarget, distanceToTarget, obstructionMask))
                 {
-                   // AudioManager.instance.PlayAudio(HelloClip, "HelloSound");
+                    if (currentTime>maxTime)
+                    {
+                        AudioManager.instance.PlayAudio(HelloClip, "HelloSound");
+                        currentTime = 0;
+                    }
+                    
                     return true;
                 }
                 else

@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+
 [RequireComponent(typeof(CharacterController))]
 
 public class PlayerMovementCC : MonoBehaviour
@@ -61,6 +63,10 @@ public class PlayerMovementCC : MonoBehaviour
         {
             currentSpeed = Mathf.Lerp(currentSpeed, 0, acceleration * Time.deltaTime);
 
+        }
+        if (Input.GetKey(KeyCode.Escape))
+        {
+            SceneManager.LoadScene("Menu");
         }
 
         movementVector = transform.forward * currentSpeed * z + transform.right * currentSpeed * x;

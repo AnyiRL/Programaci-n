@@ -1,10 +1,9 @@
 fileFormatVersion: 2
-guid: c9ccb196935c1a441a56fddabe500df5
+guid: 753cfd5dba3eb984ebd2015d1a130f6e
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences:
-  - HelloClip: {fileID: 8300000, guid: cc8c004ceef7de04993cfffe8b30dd89, type: 3}
+  defaultReferences: []
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

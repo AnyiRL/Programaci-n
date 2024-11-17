@@ -74,4 +74,8 @@ public class GameManager : MonoBehaviour
     {
         hours = value;
     }
+    public void Exit()
+    {
+        Application.Quit();// cierra la aplicacion
+    }
 }

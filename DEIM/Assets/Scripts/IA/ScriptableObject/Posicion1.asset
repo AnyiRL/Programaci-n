@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5848aaba96e48c94183ef5201239b02f, type: 3}
+  m_Name: Posicion1
+  m_EditorClassIdentifier: 
+  stateParameters:
+  - actionParameters: []
+    nextState: {fileID: 11400000, guid: 2240564bc30d87e4781924e332b4f290, type: 2}
+    and: 1
+  guardPoint: {x: 191.96768, y: 2.1115475, z: 814.79236}
+  blendParameter: Hello
