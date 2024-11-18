@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -61,10 +62,10 @@ public class GameManager : MonoBehaviour
     {
         lifes -= valor;
 
-        //if (lifes <= 0)
-        //{
-        //    lifes = initialLifes;
-        //}
+        if (lifes <= 0)
+        {
+            SceneManager.LoadScene("Menu");
+        }
     }
     public List<string> GetTime()
     {

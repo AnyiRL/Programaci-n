@@ -17,7 +17,7 @@ public class ChaseState : State
         GameObject target = owner.GetComponent<TargetReference>().target;
         navMeshAgent.SetDestination(target.transform.position);
         Animator animator = owner.GetComponent<Animator>();
-        animator.SetFloat(blendParameter, navMeshAgent.velocity.magnitude / navMeshAgent.speed);
+        animator.SetFloat(blendParameter, navMeshAgent.velocity.magnitude / navMeshAgent.speed); //animacion gradual que depende de la velocidad
 
         return nextState;
     }

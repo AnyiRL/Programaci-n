@@ -11,7 +11,7 @@ public class ChangeScene : MonoBehaviour
     }
     public void Menu()
     {
-        SceneManager.LoadScene("Menu");     
+        SceneManager.LoadScene("Menu");
     }
 
     public void ExitGame()

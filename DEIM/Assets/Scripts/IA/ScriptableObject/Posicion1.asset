@@ -13,8 +13,10 @@ MonoBehaviour:
   m_Name: Posicion1
   m_EditorClassIdentifier: 
   stateParameters:
-  - actionParameters: []
+  - actionParameters:
+    - action: {fileID: 11400000, guid: f037698ca03918f4594a585343525cbe, type: 2}
+      actionValue: 1
     nextState: {fileID: 11400000, guid: 2240564bc30d87e4781924e332b4f290, type: 2}
-    and: 1
-  guardPoint: {x: 191.96768, y: 2.1115475, z: 814.79236}
+    and: 0
+  guardPoint: {x: 170.62796, y: 2.6061049, z: 776.98956}
   blendParameter: Hello

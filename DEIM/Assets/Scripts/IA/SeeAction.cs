@@ -17,6 +17,7 @@ public class SeeAction : Action
     public AudioClip HelloClip;
     private float currentTime = 0;
     private float maxTime = 2;
+    private int valor = 1;
     void Update()
     {
         currentTime += Time.deltaTime;
@@ -30,7 +31,7 @@ public class SeeAction : Action
             Transform target = rangeChecks[0].transform;
             Vector3 directionToTarget = (target.position - owner.transform.position).normalized;
 
-            if (Vector3.Angle(owner.transform.forward, directionToTarget) < angle / 2)
+            if (Vector3.Angle(owner.transform.forward, directionToTarget) < angle / 2)    //para que se calcule a partir del centro
             {
                 float distanceToTarget = Vector3.Distance(owner.transform.position, target.position);
 
@@ -39,6 +40,7 @@ public class SeeAction : Action
                     if (currentTime>maxTime)
                     {
                         AudioManager.instance.PlayAudio(HelloClip, "HelloSound");
+                        GameManager.instance.AddLifes(valor);
                         currentTime = 0;
                     }
                     

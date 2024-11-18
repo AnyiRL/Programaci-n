@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028331, g: 0.2257133, b: 0.3069217, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1269,43 +1269,43 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 0791dc0d6c873cd41abf171a768d4ccf, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 191.96768
+      value: 170.5
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 0791dc0d6c873cd41abf171a768d4ccf, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.1115475
+      value: -9.3
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 0791dc0d6c873cd41abf171a768d4ccf, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 814.79236
+      value: 776.7
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 0791dc0d6c873cd41abf171a768d4ccf, type: 3}
       propertyPath: m_LocalRotation.w
-      value: -0.2543979
+      value: -0.9830569
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 0791dc0d6c873cd41abf171a768d4ccf, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.0019967475
+      value: -0.013445922
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 0791dc0d6c873cd41abf171a768d4ccf, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.96700156
+      value: -0.18278235
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 0791dc0d6c873cd41abf171a768d4ccf, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.013629095
+      value: 0.002991073
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 0791dc0d6c873cd41abf171a768d4ccf, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: -1.569
+      value: 1.578
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 0791dc0d6c873cd41abf171a768d4ccf, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 209.481
+      value: 381.065
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 0791dc0d6c873cd41abf171a768d4ccf, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: -0.176
+      value: -0.055
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 0791dc0d6c873cd41abf171a768d4ccf, type: 3}
       propertyPath: m_Name
@@ -2273,8 +2273,8 @@ Terrain:
   m_Enabled: 1
   serializedVersion: 6
   m_TerrainData: {fileID: 15600000, guid: 6a2ed78575de337409889fff06af9b42, type: 2}
-  m_TreeDistance: 1304
-  m_TreeBillboardDistance: 319
+  m_TreeDistance: 537
+  m_TreeBillboardDistance: 160
   m_TreeCrossFadeLength: 5
   m_TreeMaximumFullLODCount: 50
   m_DetailObjectDistance: 300
@@ -2740,7 +2740,7 @@ NavMeshAgent:
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
-  m_StoppingDistance: 4.65
+  m_StoppingDistance: 1
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1

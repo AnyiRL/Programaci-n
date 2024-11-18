@@ -19,5 +19,5 @@ MonoBehaviour:
   obstructionMask:
     serializedVersion: 2
     m_Bits: 128
-  angle: 125
+  angle: 72
   HelloClip: {fileID: 8300000, guid: cc8c004ceef7de04993cfffe8b30dd89, type: 3}
